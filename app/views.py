@@ -1,9 +1,11 @@
 from django.http import HttpRequest, HttpResponse
+from django.views.generic import CreateView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import TokenAuthentication
 from django.shortcuts import render, get_object_or_404
 from app.serializers import BoardSerializer
+from .forms import PostForm
 
 from .models import Board
 from .permissions import UpdateOwnProfile
@@ -29,6 +31,13 @@ def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, "app/post_detail.html", {
         "post": post,
     })
+
+
+post_new = CreateView.as_view(
+    model=Board,
+    form_class=PostForm,
+    success_url="/app/",
+)
 
 
 class BoardViewSet(ModelViewSet):

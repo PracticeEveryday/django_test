@@ -3,7 +3,13 @@
 {% block content %}
     {% for post in post_list %}
         <div>
-            {{ post.id}}. {{post.title}}
+            {# 여기는 주석임 #}
+            {# TODO: url reverse 기능을 쓰도록 수정되어야 함! #}
+            <a href="/app/{{ post.id }}/">
+                {{ post.id}}. {{post.title}}
+            </a>
         </div>
     {% endfor %}
+    <hr/>
+    <a href="/app/new/">새포스팅</a>
 {% endblock %}

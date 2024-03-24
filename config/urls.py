@@ -10,6 +10,7 @@ urlpatterns = [
     path("app/", app_views.index),
     # 정수 인자가 오면 pk라는 이름으로 post_detail 함수 호출 시 인자로 넘겨주겠다!
     path("app/<int:pk>/", app_views.post_detail),
+    path("app/new/", app_views.post_new),
 
     path('admin/', admin.site.urls),
 ]
