@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     # local apps
     'app',
     'user',
-
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -114,3 +114,7 @@ LOGGING = {
         },
     }
 }
+
+
+# 로그인 후에 이동할 주소
+LOGIN_REDIRECT_URL="/app/"
