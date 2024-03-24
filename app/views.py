@@ -2,7 +2,7 @@ from django.http import HttpRequest, HttpResponse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import TokenAuthentication
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from app.serializers import BoardSerializer
 
 from .models import Board
@@ -19,6 +19,15 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "app/index.html", {
         # post_list라는 이름으로 템플릿에서 참조 가능하다!!!
         "post_list": qs
+    })
+
+
+def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    # post = Board.objects.get(pk=pk)
+    # 없을 시 404로 내려주기!
+    post = get_object_or_404(Board, pk=pk)
+    return render(request, "app/post_detail.html", {
+        "post": post,
     })
 
 
