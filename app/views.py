@@ -39,6 +39,7 @@ def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
     })
 
 
+# {{mddel}}_form.html을 따라감
 post_new = CreateView.as_view(
     model=Board,
     form_class=PostForm,
